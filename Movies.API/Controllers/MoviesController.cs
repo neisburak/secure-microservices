@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Movies.API.Data;
@@ -5,6 +6,7 @@ using Movies.API.Models;
 
 namespace Movies.API.Controllers
 {
+    [Authorize("ClientPolicy")]
     [ApiController]
     [Route("api/[controller]")]
     public class MoviesController : ControllerBase
