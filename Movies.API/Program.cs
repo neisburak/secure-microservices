@@ -32,7 +32,7 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("ClientPolicy", policy =>
     {
-        policy.RequireClaim("client_id", "movie.client");
+        policy.RequireClaim("client_id", "movies.mvc.client");
     });
 });
 
