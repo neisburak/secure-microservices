@@ -1,6 +1,9 @@
 using IdentityServer;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddIdentityServer()
 .AddInMemoryApiScopes(Config.ApiScopes)
@@ -17,8 +20,16 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseStaticFiles();
+
 app.UseRouting();
 
 app.UseIdentityServer();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
